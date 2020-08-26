@@ -6,9 +6,21 @@ services:
     expose:
       - 3050/tcp
     ports:
+      - "3050:3050"
+    volumes:
+      - /mnt/disk2/databases/2.5.9:/firebird/data
+    environment:
+      - ISC_PASSWORD=masterkey
+      - FIREBIRD_USER=sysdba
+
+  firebird25:
+    image: jacobalberty/firebird:2.5-ss
+    expose:
+      - 3050/tcp
+    ports:
       - "3051:3050"
     volumes:
-      - /mnt/disk2/databases/2.5:/firebird/data
+      - /mnt/disk2/database/2.5:/firebird/data
     environment:
       - ISC_PASSWORD=masterkey
       - FIREBIRD_USER=sysdba
@@ -24,7 +36,7 @@ services:
     environment:
       - ISC_PASSWORD=masterkey
       - FIREBIRD_USER=SYSDBA
-
+  
   firebird40:
     image: jacobalberty/firebird:4.0
     expose:
@@ -36,3 +48,4 @@ services:
     environment:
       - ISC_PASSWORD=masterkey
       - FIREBIRD_USER=SYSDBA
+
