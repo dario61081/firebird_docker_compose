@@ -48,4 +48,17 @@ services:
     environment:
       - ISC_PASSWORD=masterkey
       - FIREBIRD_USER=SYSDBA
+  
+  redis:
+    image: redis:alpine
+    expose:
+      - 6379/tcp
+    ports:
+      - "6379:6379"
+
+  rabbitmq:
+    image: rabbitmq:alpine
+    ports:
+      - 5672:5672
+      - 15672:15672
 
